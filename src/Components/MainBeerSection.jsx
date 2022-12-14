@@ -8,6 +8,7 @@ const MainBeerSection = () => {
   const [KegList, setKegList] = useState([]);
   const [Page, setPage] = useState("");
   const [PerPage, setPerPage] = useState("");
+  const [Loading, setLoading] = useState(true);
 
   const pageChange = (event) => {
     if (event.target.value > 0) {
@@ -22,24 +23,26 @@ const MainBeerSection = () => {
   };
 
   useEffect(() => {
+    setLoading(true);
     getBeers(Page, PerPage).then((beers) => {
       setKegList(beers);
+      setLoading(false);
     });
   }, [Page, PerPage]);
 
   return (
     <>
       <h2 id="pageTitle">Beer</h2>
-
       <input type="text" placeholder="Page Number" onChange={pageChange} />
       <input
         type="text"
         placeholder="Page Size"
         onChange={resultsNumberChange}
       />
-
       <div id="beerSection">
-        {KegList.length === 0 ? (
+        {Loading ? (
+          <p>Loading... </p>
+        ) : KegList.length === 0 ? (
           <p>No Results, try a lower page number!</p>
         ) : (
           KegList.map((beer) => {
