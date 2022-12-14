@@ -46,7 +46,7 @@ const MainBeerSection = () => {
             <Card id={beer.id} key={beer.id} className="beerCard">
               <Card.Title id="beerTitle">{beer.name}</Card.Title>
               <Card.Text id="beerTagline">{beer.tagline}</Card.Text>
-              <Image id="beerImage" src={beer.image_url}></Image>
+              <Image id="beerImage" alt={beer.name} src={beer.image_url} />
             </Card>
           );
         })}
