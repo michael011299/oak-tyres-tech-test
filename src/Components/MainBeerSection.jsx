@@ -39,15 +39,19 @@ const MainBeerSection = () => {
       />
 
       <div id="beerSection">
-        {KegList.map((beer) => {
-          return (
-            <Card id={beer.id} key={beer.id} className="beerCard">
-              <Card.Title id="beerTitle">{beer.name}</Card.Title>
-              <Card.Text id="beerTagline">{beer.tagline}</Card.Text>
-              <Image id="beerImage" alt={beer.name} src={beer.image_url} />
-            </Card>
-          );
-        })}
+        {KegList.length === 0 ? (
+          <p>No Results, try a lower page number!</p>
+        ) : (
+          KegList.map((beer) => {
+            return (
+              <Card id={beer.id} key={beer.id} className="beerCard">
+                <Card.Title id="beerTitle">{beer.name}</Card.Title>
+                <Card.Text id="beerTagline">{beer.tagline}</Card.Text>
+                <Image id="beerImage" alt={beer.name} src={beer.image_url} />
+              </Card>
+            );
+          })
+        )}
       </div>
     </>
   );
