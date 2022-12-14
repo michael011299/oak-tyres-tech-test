@@ -12,14 +12,12 @@ const MainBeerSection = () => {
   const pageChange = (event) => {
     if (event.target.value > 0) {
       setPage(`?page=${event.target.value}`);
-      setPerPage("");
     }
   };
 
   const resultsNumberChange = (event) => {
     if (event.target.value > 0) {
-      setPerPage(`?per_page=${event.target.value}`);
-      setPage("");
+      setPerPage(`&per_page=${event.target.value}`);
     }
   };
 
