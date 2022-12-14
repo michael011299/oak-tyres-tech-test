@@ -1,0 +1,32 @@
+#beerSection{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+#pageTitle{
+    text-align: right;
+}
+
+.beerCard{
+    height: 300px;
+    align-items: center;
+    border-style: solid;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#beerTitle{
+    text-align: center;
+    font-size: large;
+    font-weight: bold;
+}
+
+#beerTagline{
+    font-size: medium;
+}
+
+#beerImage{
+    height: 150px;
+}
