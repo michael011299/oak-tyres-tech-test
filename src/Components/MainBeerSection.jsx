@@ -61,6 +61,7 @@ const MainBeerSection = () => {
                 <Card.Text id="beerTagline">{beer.tagline}</Card.Text>
                 <Image id="beerImage" alt={beer.name} src={beer.image_url} />
                 <Popup
+                  id="popup"
                   trigger={
                     <Button id="singleBeerButton">More Beer Info</Button>
                   }
@@ -68,33 +69,26 @@ const MainBeerSection = () => {
                   nested
                 >
                   {(close) => (
-                    <div className="modal">
+                    <div id="modal">
                       <button className="close" onClick={close}>
                         &times;{" "}
                       </button>
 
-                      <Card.Title id="beerTitle">{beer.name}</Card.Title>
-                      <Card.Text id="beerText">
+                      <Card.Title id="modalTitle">{beer.name}</Card.Title>
+                      <Card.Text id="modalTagline">{beer.tagline}</Card.Text>
+                      <Card.Text id="modalText">
                         First Brewed: {beer.first_brewed}
                       </Card.Text>
-                      <Card.Text id="beerText">{beer.tagline}</Card.Text>
                       <Image
                         id="beerImage"
                         alt={beer.name}
                         src={beer.image_url}
                       />
-                      <Card.Text id="beerText">{beer.description}</Card.Text>
-                      <Card.Text id="beerText">{beer.brewers_tips}</Card.Text>
-
-                      <Button
-                        className="button"
-                        onClick={() => {
-                          console.log("modal closed ");
-                          close();
-                        }}
-                      >
-                        Close
-                      </Button>
+                      <Card.Text id="modalText">{beer.description}</Card.Text>
+                      <Card.Text id="modalText">
+                        Brewers Tips: <br></br>
+                        {beer.brewers_tips}
+                      </Card.Text>
                     </div>
                   )}
                 </Popup>

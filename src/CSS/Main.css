@@ -26,6 +26,7 @@
 #beerTagline{
     font-size: medium;
     height: 20px;
+    text-align: center;
 }
 
 #beerImage{
@@ -41,3 +42,29 @@
     margin-top: auto;
 }
 
+
+#modal{
+    border-radius: 5px;
+    border-width: 2px;
+    background-color: gray ;
+    padding: 10px;
+}
+
+#modalTitle{
+    color: white;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    border-bottom: 1px solid white;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    padding: 5px;
+  }
+  #modalTagline{
+    color: white;
+    text-align: center;
+  }
+  #modalText{
+    color: white;
+  }
