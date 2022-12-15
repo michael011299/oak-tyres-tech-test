@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
 import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
 import { Image } from "react-bootstrap";
 import { getBeers } from "../ApiCalls";
+import Popup from "reactjs-popup";
+import "reactjs-popup/dist/index.css";
 import "../CSS/Main.css";
 
 const MainBeerSection = () => {
@@ -30,6 +33,12 @@ const MainBeerSection = () => {
     });
   }, [Page, PerPage]);
 
+  // const popUp = (beer) => {
+  //   return (
+
+  //   );
+  // };
+
   return (
     <>
       <h2 id="pageTitle">Beer</h2>
@@ -51,6 +60,44 @@ const MainBeerSection = () => {
                 <Card.Title id="beerTitle">{beer.name}</Card.Title>
                 <Card.Text id="beerTagline">{beer.tagline}</Card.Text>
                 <Image id="beerImage" alt={beer.name} src={beer.image_url} />
+                <Popup
+                  trigger={
+                    <Button id="singleBeerButton">More Beer Info</Button>
+                  }
+                  modal
+                  nested
+                >
+                  {(close) => (
+                    <div className="modal">
+                      <button className="close" onClick={close}>
+                        &times;{" "}
+                      </button>
+
+                      <Card.Title id="beerTitle">{beer.name}</Card.Title>
+                      <Card.Text id="beerText">
+                        First Brewed: {beer.first_brewed}
+                      </Card.Text>
+                      <Card.Text id="beerText">{beer.tagline}</Card.Text>
+                      <Image
+                        id="beerImage"
+                        alt={beer.name}
+                        src={beer.image_url}
+                      />
+                      <Card.Text id="beerText">{beer.description}</Card.Text>
+                      <Card.Text id="beerText">{beer.brewers_tips}</Card.Text>
+
+                      <Button
+                        className="button"
+                        onClick={() => {
+                          console.log("modal closed ");
+                          close();
+                        }}
+                      >
+                        Close
+                      </Button>
+                    </div>
+                  )}
+                </Popup>
               </Card>
             );
           })
