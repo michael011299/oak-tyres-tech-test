@@ -42,12 +42,16 @@
     margin-top: auto;
 }
 
-
 #modal{
     border-radius: 5px;
     border-width: 2px;
     background-color: gray ;
     padding: 10px;
+}
+
+#mainButtons{
+    background-color: white;
+    border-style: none;
 }
 
 #modalTitle{

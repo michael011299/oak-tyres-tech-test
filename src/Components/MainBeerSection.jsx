@@ -33,12 +33,6 @@ const MainBeerSection = () => {
     });
   }, [Page, PerPage]);
 
-  // const popUp = (beer) => {
-  //   return (
-
-  //   );
-  // };
-
   return (
     <>
       <h2 id="pageTitle">Beer</h2>
@@ -56,43 +50,49 @@ const MainBeerSection = () => {
         ) : (
           KegList.map((beer) => {
             return (
-              <Card id={beer.id} key={beer.id} className="beerCard">
-                <Card.Title id="beerTitle">{beer.name}</Card.Title>
-                <Card.Text id="beerTagline">{beer.tagline}</Card.Text>
-                <Image id="beerImage" alt={beer.name} src={beer.image_url} />
-                <Popup
-                  id="popup"
-                  trigger={
-                    <Button id="singleBeerButton">More Beer Info</Button>
-                  }
-                  modal
-                  nested
-                >
-                  {(close) => (
-                    <div id="modal">
-                      <button className="close" onClick={close}>
-                        &times;{" "}
-                      </button>
-
-                      <Card.Title id="modalTitle">{beer.name}</Card.Title>
-                      <Card.Text id="modalTagline">{beer.tagline}</Card.Text>
-                      <Card.Text id="modalText">
-                        First Brewed: {beer.first_brewed}
-                      </Card.Text>
+              <Popup
+                id="popup"
+                trigger={
+                  <Button id="mainButtons">
+                    <Card id={beer.id} key={beer.id} className="beerCard">
+                      <Card.Title id="beerTitle">{beer.name}</Card.Title>
+                      <Card.Text id="beerTagline">{beer.tagline}</Card.Text>
                       <Image
                         id="beerImage"
                         alt={beer.name}
                         src={beer.image_url}
                       />
-                      <Card.Text id="modalText">{beer.description}</Card.Text>
-                      <Card.Text id="modalText">
-                        Brewers Tips: <br></br>
-                        {beer.brewers_tips}
-                      </Card.Text>
-                    </div>
-                  )}
-                </Popup>
-              </Card>
+                      <Card.Text>Click on beer to see more info</Card.Text>
+                    </Card>
+                  </Button>
+                }
+                modal
+                nested
+              >
+                {(close) => (
+                  <div id="modal">
+                    <button className="close" onClick={close}>
+                      &times;
+                    </button>
+
+                    <Card.Title id="modalTitle">{beer.name}</Card.Title>
+                    <Card.Text id="modalTagline">{beer.tagline}</Card.Text>
+                    <Card.Text id="modalText">
+                      First Brewed: {beer.first_brewed}
+                    </Card.Text>
+                    <Image
+                      id="beerImage"
+                      alt={beer.name}
+                      src={beer.image_url}
+                    />
+                    <Card.Text id="modalText">{beer.description}</Card.Text>
+                    <Card.Text id="modalText">
+                      Brewers Tips: <br></br>
+                      {beer.brewers_tips}
+                    </Card.Text>
+                  </div>
+                )}
+              </Popup>
             );
           })
         )}
